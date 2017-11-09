@@ -2,7 +2,7 @@
   "name": "oo",
   "description": "oo-2017",
   "author": "Kawaoat <kawaoat@gmail.com>",
-  "private": true,
+  "private": false,
   "scripts": {
     "watchify": "watchify -vd -p browserify-hmr -e src/main.js -o dist/build.js",
     "serve": "http-server -o -s -c 1 -a localhost",
