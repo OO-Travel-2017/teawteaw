@@ -1,7 +1,12 @@
 <template>
   <div id="app">
     <show-page v-bind:eventAll="events" v-bind:user="user"></show-page>
-    <search-event v-bind:eventAll="events"></search-event>
+    <search-event v-bind:eventAll="events"
+        @typeEvent="handleEvent"
+      ></search-event>
+    <!-- <div id="example-1">
+      <button @click="listAllEvent">List All</button>
+    </div> -->
     <!-- <img src="http://vuejs.org/images/logo.png">
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
@@ -25,21 +30,17 @@
 import eventItem from './components/eventItem.vue'
 import searchEvent from './components/searchEvent.vue'
 import showEventPage from './components/showEventPage.vue'
-import Firebase from 'firebase'
+import firebase from 'firebase'
+//import { listAllEvent } from './coke'
+
 // import toastr from 'toastr'
 // Initialize Firebase
-let config = {
-  apiKey: "AIzaSyB4a_UPCTlPDVe6r2grNYKP_TQZbfe4DgA",
-  authDomain: "fir-realtimeweb-4eb12.firebaseapp.com",
-  databaseURL: "https://fir-realtimeweb-4eb12.firebaseio.com",
-  projectId: "fir-realtimeweb-4eb12",
-  storageBucket: "fir-realtimeweb-4eb12.appspot.com",
-  messagingSenderId: "186732470338"
-  };
+const config={
+    databaseURL: "https://fir-realtimeweb-4eb12.firebaseio.com",
+}
 
-let firebaseApp = Firebase.initializeApp(config)
-let db = firebaseApp.database()
-
+firebase.initializeApp(config)
+const db = firebase.database()
 
 export default {
   name: 'app',
@@ -54,6 +55,7 @@ export default {
      ],
      user:'sukee'
     }
+
   },
   components: {
     'event-item': eventItem,
@@ -61,6 +63,21 @@ export default {
     'show-page':showEventPage
     //'eventList':eventList
     //'all-event': allEvent
+  },
+  methods: {
+    handleEvent(eventN){
+      this.new_event = [];
+      var firebaseRef = db.ref("event").orderByChild("eventName").startAt(eventN).endAt(eventN+"\uf8ff");
+      firebaseRef.once('value').then(function (dataSnapshot) {
+        //split key and value
+        dataSnapshot.forEach(function (childSnapshot) {
+            var childKey = childSnapshot.key;
+            var childData = childSnapshot.val();
+            //childData is JSON of data, you can apply to other variable
+            console.log(childData);
+        })
+    });
+    }
   }
 }
 </script>
