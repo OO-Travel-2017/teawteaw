@@ -1,11 +1,16 @@
 <template>
   <div id="app">
     <event-detail></event-detail>
+    <!-- <show-page v-bind:eventAll="events" v-bind:user="user"></show-page> -->
+    <search-event v-bind:eventAll="events"></search-event>
   </div>
 </template>
 
 <script>
   import eventDetail from "./components/eventDetail.vue";
+  import eventItem from './components/eventItem.vue'
+  import searchEvent from './components/searchEvent.vue'
+  import showEventPage from './components/showEventPage.vue'
   import Firebase from "firebase";
   // import toastr from 'toastr'
   // Initialize Firebase
@@ -25,11 +30,21 @@
     name: "app",
     data() {
       return {
-        msg: "Welcome to Your Vue.js App"
+        events:[
+        {nameEvent:'Japan Go Go',dateTime:'22 Jan 2560',hostEvent:'sukee',member:Array('oat','paint','coke'),show:false,pic:"../assets/image.png"},
+        {nameEvent:'Korea Go Go',dateTime:'22 Jan 2560',hostEvent:'oat',member:Array('sukee','paint','coke'),show:false,pic:"../assets/image.png"},
+        {nameEvent:'Thailand Go Go',dateTime:'22 Jan 2560',hostEvent:'sukee',member:Array('oat','paint','coke'),show:false,pic:"../assets/image.png"},
+        {nameEvent:'England Go Go',dateTime:'22 Jan 2560',hostEvent:'coke',member:Array('oat','paint','sukee'),show:false,pic:"../assets/image.png"},
+        {nameEvent:'England Go Go',dateTime:'22 Jan 2560',hostEvent:'coke',member:Array('oat','paint','sukee'),show:false,pic:"../assets/image.png"}
+     ],
+     user:'sukee'
       };
     },
     components: {
-      eventDetail
+      eventDetail,
+      'event-item': eventItem,
+      'search-event': searchEvent,
+      'show-page':showEventPage
     }
   };
 </script>
