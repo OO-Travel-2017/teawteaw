@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    Hello app!
-    <event-item></event-item>
+    <show-page v-bind:eventAll="events" v-bind:user="user"></show-page>
+    <search-event v-bind:eventAll="events"></search-event>
     <!-- <img src="http://vuejs.org/images/logo.png">
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
@@ -23,6 +23,8 @@
 
 <script>
 import eventItem from './components/eventItem.vue'
+import searchEvent from './components/searchEvent.vue'
+import showEventPage from './components/showEventPage.vue'
 import Firebase from 'firebase'
 // import toastr from 'toastr'
 // Initialize Firebase
@@ -43,11 +45,22 @@ export default {
   name: 'app',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      events:[
+        {nameEvent:'Japan Go Go',dateTime:'22 Jan 2560',hostEvent:'sukee',member:Array('oat','paint','coke'),show:false},
+        {nameEvent:'Korea Go Go',dateTime:'22 Jan 2560',hostEvent:'oat',member:Array('sukee','paint','coke'),show:false},
+        {nameEvent:'Thailand Go Go',dateTime:'22 Jan 2560',hostEvent:'sukee',member:Array('oat','paint','coke'),show:false},
+        {nameEvent:'England Go Go',dateTime:'22 Jan 2560',hostEvent:'coke',member:Array('oat','paint','sukee'),show:false},
+        {nameEvent:'England Go Go',dateTime:'22 Jan 2560',hostEvent:'coke',member:Array('oat','paint','sukee'),show:false}
+     ],
+     user:'sukee'
     }
   },
   components: {
-    eventItem
+    'event-item': eventItem,
+    'search-event': searchEvent,
+    'show-page':showEventPage
+    //'eventList':eventList
+    //'all-event': allEvent
   }
 }
 </script>
