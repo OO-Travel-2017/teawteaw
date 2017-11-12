@@ -1,9 +1,9 @@
 <<template>
     <div>
-        <ul v-for="event in eventList" v-on:click="event.show=!event.show">
-            <h3>{{event.nameEvent}}</h3>
-            <h3 v-show="event.show">{{event.dateTime}}</h3>
-            <h3 v-show="event.show">{{event.hostEvent}}</h3>
+        <ul href="#" role="button" class="panel panel-danger" v-for="event in eventList">
+            <div class="panel-heading">{{event.nameEvent}}</div>
+            <div class="panel-body" >{{event.dateTime}}</div>
+            <div class="panel-body" >{{event.hostEvent}}</div>
         </ul>
     </div>
 </template>
@@ -21,10 +21,7 @@ export default {
 <<style scoped>
 ul{
     text-align: left;
-    border: 2px solid Orange;
-    border-radius: 20px;
-    background-color: Orange;
-    padding: 10px 20px 20px 40px;
+    padding: 0px 0px 0px 0px;
     margin:  10px 20px 20px 40px
 }
 </style>
