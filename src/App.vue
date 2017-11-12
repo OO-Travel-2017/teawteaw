@@ -3,6 +3,10 @@
     <event-detail></event-detail>
     <!-- <show-page v-bind:eventAll="events" v-bind:user="user"></show-page> -->
     <search-event v-bind:eventAll="events"></search-event>
+    <show-page v-bind:eventAll="events" v-bind:user="user"></show-page>
+    <search-event v-bind:eventAll="events"
+        @typeEvent="handleEvent"
+      ></search-event>
   </div>
 </template>
 
@@ -45,7 +49,22 @@
       'event-item': eventItem,
       'search-event': searchEvent,
       'show-page':showEventPage
+    },
+    methods: {
+    handleEvent(eventN){
+      this.new_event = [];
+      var firebaseRef = db.ref("event").orderByChild("eventName").startAt(eventN).endAt(eventN+"\uf8ff");
+      firebaseRef.once('value').then(function (dataSnapshot) {
+        //split key and value
+        dataSnapshot.forEach(function (childSnapshot) {
+            var childKey = childSnapshot.key;
+            var childData = childSnapshot.val();
+            //childData is JSON of data, you can apply to other variable
+            console.log(childData);
+        })
+    });
     }
+  }
   };
 </script>
 

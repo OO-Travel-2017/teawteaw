@@ -1,11 +1,13 @@
-<<template>
+<template>
   <div>
-      <input type="text"v-model="search" placeholder="search event"/>
+      <input type="text"v-model="search" placeholder="search event" 
+        @change="typeEvent(search)" />
       <div class=""><event-list v-bind:eventList="filteredEvent"></event-list></div>
+
   </div>
 </template>
 
-<<script>
+<script>
 import eventList from './eventItem.vue'
 export default {
     props:['eventAll'],
@@ -18,10 +20,14 @@ export default {
         }
     },
     methods:{
-
+        typeEvent(eventN){
+            console.log("Emit!")
+            this.$emit('typeEvent', this.search)
+      }
     },
     computed: {
         filteredEvent:function () {
+        this.$emit('typeEvent', this.search)
             return this.eventAll.filter((event)=>{
                 return event.nameEvent.match(this.search)
             })
@@ -30,7 +36,6 @@ export default {
 
 }
 </script>
-
 <<style scoped>
 div.container{
     border: 1px solid orange;
@@ -39,6 +44,4 @@ div.container{
     margin:  10px 20px 20px 40px
 }
 </style>
->
->
 >
