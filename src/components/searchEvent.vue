@@ -1,13 +1,9 @@
 <template>
   <div>
-<<<<<<< HEAD
-      <input type="text"v-model="search" placeholder="search event"/>
-      <div class=""><event-list v-bind:eventList="filteredEvent"></event-list></div>
-=======
       <input type="text"v-model="search" placeholder="search event" 
         @change="typeEvent(search)" />
-      <event-list v-bind:eventList="filteredEvent"></event-list>
->>>>>>> 9dce7d8f1dc6cbece05f7297a2eb81da78e86456
+      <div class=""><event-list v-bind:eventList="filteredEvent"></event-list></div>
+
   </div>
 </template>
 
@@ -40,8 +36,6 @@ export default {
 
 }
 </script>
-
-<<<<<<< HEAD
 <<style scoped>
 div.container{
     border: 1px solid orange;
@@ -49,9 +43,5 @@ div.container{
     padding: 20px 5px 5px 5px;
     margin:  10px 20px 20px 40px
 }
-=======
-<style scoped>
-
->>>>>>> 9dce7d8f1dc6cbece05f7297a2eb81da78e86456
 </style>
 >
