@@ -27,7 +27,7 @@ export default {
     },
     computed: {
         filteredEvent:function () {
-        this.$emit('typeEvent', this.search)
+         this.$emit('typeEvent', this.search)
             return this.eventAll.filter((event)=>{
                 return event.nameEvent.match(this.search)
             })
