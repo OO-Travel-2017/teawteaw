@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    <home-page v-bind:user="user"></home-page>
-
+    <!--<home-page v-bind:user="user"></home-page> -->
+    <!--<event-detail></event-detail>-->
+    
+    <router-view></router-view>
     <!-- <show-page v-bind:eventAll="events" v-bind:user="user"></show-page> -->
 
   </div>
@@ -9,6 +11,7 @@
 
 <script>
   import homePage from './components/homePage.vue'
+  import eventDetail from './components/eventDetail.vue'
   import Firebase from "firebase";
   // import toastr from 'toastr'
   // Initialize Firebase
@@ -33,9 +36,11 @@
       };
     },
     components: {
-      homePage
+      homePage,
+      eventDetail
     }
   };
+
 </script>
 
 <style scoped>

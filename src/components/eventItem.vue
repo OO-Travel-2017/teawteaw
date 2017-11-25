@@ -1,4 +1,4 @@
-<<template>
+<template>
     <div>
         <ul href="#" role="button" class="panel panel-danger" v-for="event in eventList">
             <div class="panel-heading">{{event.nameEvent}}</div>
@@ -7,7 +7,7 @@
         </ul>
     </div>
 </template>
-<<script>
+<script>
 export default {
   props:['eventList'],
   data() {
@@ -18,13 +18,10 @@ export default {
 }
 </script>
 
-<<style scoped>
+<style scoped>
 ul{
     text-align: left;
     padding: 0px 0px 0px 0px;
     margin:  10px 20px 20px 40px
 }
 </style>
->
->
->
