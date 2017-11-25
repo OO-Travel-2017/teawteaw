@@ -1,3 +1,4 @@
+import './firebase'
 import Vue from 'vue'
 import VueFire from 'vuefire'
 import App from './App.vue'
@@ -7,12 +8,13 @@ import homePage from './components/homePage.vue'
 import eventDetail from './components/eventDetail.vue'
 
 Vue.use(VueRouter);
-// Vue.use(VueFire);
+Vue.use(VueFire);
 
 const routes = [
   {
-    path: '/homepage',
-    component:homePage
+    path: '/',
+    component:homePage,
+    props: true
   },
   {
     path: '/event',
@@ -24,7 +26,6 @@ const router = new VueRouter({
   routes
   // mode: 'history'
 });
-
 new Vue({
   el: '#app',
   router,
