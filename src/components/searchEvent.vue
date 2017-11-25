@@ -10,6 +10,7 @@
 <script>
 import eventList from './eventItem.vue'
 export default {
+    name: 'searchEvent',
     props:['eventAll'],
     components: {
       'event-list':eventList

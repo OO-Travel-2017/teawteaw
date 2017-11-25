@@ -1,19 +1,20 @@
 <<template>
     <div>
         <ul class="nav nav-tabs">
-            <li class="active"v-on:click="isHost()"><a data-toggle="tab" href="#">All Event</a></li>
+            <li class="active"v-on:click="isDefault()"><a data-toggle="tab" href="#">All Event</a></li>
             <li v-on:click="isHost()"><a data-toggle="tab" href="#">Host Event</a></li>
             <li v-on:click="isMember()"><a data-toggle="tab" href="#">Member Event</a></li>
         </ul>
         <event-list v-if="all"v-bind:eventList="filterAllEvent"></event-list>
         <event-list v-if="host"v-bind:eventList="filterEventOfHost"></event-list>
-        <event-list v-if="member"v-bind:eventList="filterEventOfMember()"></event-list>
+        <event-list v-if="member"v-bind:eventList="filterEventOfMember"></event-list>
   </div>
 </template>
 <<script>
 import eventList from './eventItem.vue'
 var memberList = []
 export default {
+    name: 'showEventPage',
     props:['eventAll','user'],
     components: {
       'event-list':eventList
@@ -40,16 +41,7 @@ export default {
            this.all = false
             this.member = true
             this.host = false
-       },
-       filterEventOfMember: function(){
-            memberList = []
-            for(event of this.eventAll){
-                if(event.member.indexOf(this.user)>=0){
-                    console.log(memberList.push(event))
-                }
-            }
-            return memberList
-        }
+       }
     },
     computed:{
        filterEventOfHost: function (){
@@ -59,7 +51,16 @@ export default {
        },
        filterAllEvent: function () {
            return this.eventAll
-       }
+       },
+       filterEventOfMember: function(){
+            memberList = []
+            for(event of this.eventAll){
+                if(event.member.indexOf(this.user)>=0){
+                    memberList.push(event)
+                }
+            }
+            return memberList
+        }
        
     }
 }

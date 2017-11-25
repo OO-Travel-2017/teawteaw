@@ -1,13 +1,14 @@
 <template>
   <div id="app">
     <!-- <event-detail></event-detail> -->
-    <!-- <show-page v-bind:eventAll="events" v-bind:user="user"></show-page> -->
+    <show-page v-bind:eventAll="events" v-bind:user="user"></show-page>
     <!-- <search-event v-bind:eventAll="events"></search-event> -->
+    
     <!-- <show-page v-bind:eventAll="events" v-bind:user="user"></show-page> -->
     
-    <search-event v-bind:eventAll="events"
+    <!-- <search-event v-bind:eventAll="events"
         @typeEvent="handleEvent"
-      ></search-event>
+      ></search-event> -->
   </div>
 </template>
 
