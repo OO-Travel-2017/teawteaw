@@ -1,73 +1,40 @@
 <template>
   <div id="app">
-    <!-- <event-detail></event-detail> -->
-    <show-page v-bind:eventAll="events" v-bind:user="user"></show-page>
-    <!-- <search-event v-bind:eventAll="events"></search-event> -->
-    
+    <home-page v-bind:user="user"></home-page>
+
     <!-- <show-page v-bind:eventAll="events" v-bind:user="user"></show-page> -->
-    
-    <!-- <search-event v-bind:eventAll="events"
-        @typeEvent="handleEvent"
-      ></search-event> -->
+
   </div>
 </template>
 
 <script>
-  import eventDetail from "./components/eventDetail.vue";
-  import eventItem from './components/eventItem.vue'
-  import searchEvent from './components/searchEvent.vue'
-  import showEventPage from './components/showEventPage.vue'
+  import homePage from './components/homePage.vue'
   import Firebase from "firebase";
   // import toastr from 'toastr'
   // Initialize Firebase
-  let config = {
-    apiKey: "AIzaSyB4a_UPCTlPDVe6r2grNYKP_TQZbfe4DgA",
-    authDomain: "fir-realtimeweb-4eb12.firebaseapp.com",
-    databaseURL: "https://fir-realtimeweb-4eb12.firebaseio.com",
-    projectId: "fir-realtimeweb-4eb12",
-    storageBucket: "fir-realtimeweb-4eb12.appspot.com",
-    messagingSenderId: "186732470338"
-  };
+
+  // let config = {
+  //   apiKey: "AIzaSyB4a_UPCTlPDVe6r2grNYKP_TQZbfe4DgA",
+  //   authDomain: "fir-realtimeweb-4eb12.firebaseapp.com",
+  //   databaseURL: "https://fir-realtimeweb-4eb12.firebaseio.com",
+  //   projectId: "fir-realtimeweb-4eb12",
+  //   storageBucket: "fir-realtimeweb-4eb12.appspot.com",
+  //   messagingSenderId: "186732470338"
+  // };
   
-  let firebaseApp = Firebase.initializeApp(config);
-  let db = firebaseApp.database();
+  // let firebaseApp = Firebase.initializeApp(config);
+  // let db = firebaseApp.database();
   
   export default {
     name: "app",
     data() {
       return {
-        events:[
-        {nameEvent:'Japan Go Go',dateTime:'22 Jan 2560',hostEvent:'sukee',member:Array('oat','paint','coke'),show:false,pic:"../assets/image.png"},
-        {nameEvent:'Korea Go Go',dateTime:'22 Jan 2560',hostEvent:'oat',member:Array('sukee','paint','coke'),show:false,pic:"../assets/image.png"},
-        {nameEvent:'Thailand Go Go',dateTime:'22 Jan 2560',hostEvent:'sukee',member:Array('oat','paint','coke'),show:false,pic:"../assets/image.png"},
-        {nameEvent:'England Go Go',dateTime:'22 Jan 2560',hostEvent:'coke',member:Array('oat','paint','sukee'),show:false,pic:"../assets/image.png"},
-        {nameEvent:'England Go Go',dateTime:'22 Jan 2560',hostEvent:'coke',member:Array('oat','paint','sukee'),show:false,pic:"../assets/image.png"}
-     ],
-     user:'sukee'
+        user:'sukee'
       };
     },
     components: {
-      eventDetail,
-      'event-item': eventItem,
-      'search-event': searchEvent,
-      'show-page':showEventPage
-    },
-    methods: {
-    handleEvent(eventN){
-      this.new_event = [];
-      var firebaseRef = db.ref("event").orderByChild("eventName");
-        console.log(firebaseRef)
-    //   firebaseRef.once('value').then(function (dataSnapshot) {
-    //     //split key and value
-    //     dataSnapshot.forEach(function (childSnapshot) {
-    //         var childKey = childSnapshot.key;
-    //         var childData = childSnapshot.val();
-    //         //childData is JSON of data, you can apply to other variable
-    //         console.log(childData);
-    //     })
-    // });
+      homePage
     }
-  }
   };
 </script>
 
@@ -78,7 +45,7 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    margin-top: 60px;
+    /* margin-top: 60px; */
   }
   
   img {

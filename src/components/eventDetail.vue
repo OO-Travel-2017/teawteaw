@@ -1,5 +1,5 @@
 <<template>
-    <div class="container">
+    <div class="container wid">
         <div class="row">
             <div class="col-sm-4">
                 <!-- image of event -->
@@ -66,5 +66,7 @@
     }
 </script>
 <<style scoped>
-  
+  .wid {
+      width:100%;
+  }
 </style>
