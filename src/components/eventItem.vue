@@ -9,7 +9,7 @@
             </div>
         </div>
         </div>
-        <ul href="#" role="button" @click="handleActionButton()" class="panel panel-danger" v-for="event in eventList">
+        
             <div class="panel-heading">{{event.nameEvent}}</div>
             <div class="panel-body" >{{event.dateTime}}</div>
             <div class="panel-body" >{{event.hostEvent}}</div>
