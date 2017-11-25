@@ -10,7 +10,6 @@
 <script>
 import eventList from './eventItem.vue'
 export default {
-    name: 'searchEvent',
     props:['eventAll'],
     components: {
       'event-list':eventList
@@ -28,7 +27,7 @@ export default {
     },
     computed: {
         filteredEvent:function () {
-         this.$emit('typeEvent', this.search)
+        this.$emit('typeEvent', this.search)
             return this.eventAll.filter((event)=>{
                 return event.nameEvent.match(this.search)
             })

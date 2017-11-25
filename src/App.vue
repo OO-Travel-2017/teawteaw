@@ -1,18 +1,17 @@
 <template>
   <div id="app">
     <!--<home-page v-bind:user="user"></home-page> -->
-    <!-- <event-detail></event-detail> -->
     
     <router-view></router-view>
     <!-- <show-page v-bind:eventAll="events" v-bind:user="user"></show-page> -->
-
   </div>
 </template>
 
 <script>
   import homePage from './components/homePage.vue'
   import eventDetail from './components/eventDetail.vue'
-  import Firebase from "firebase";
+
+  // import Firebase from "firebase";
   // import toastr from 'toastr'
   // Initialize Firebase
 

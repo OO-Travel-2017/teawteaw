@@ -73,9 +73,6 @@
     export default {
         name: 'homePage',
         props: ['user'],
-        firebase:{
-
-        },
             data(){
                 return {
                     // user: "painter",
