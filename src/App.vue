@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!--<home-page v-bind:user="user"></home-page> -->
-    <!--<event-detail></event-detail>-->
+    <!-- <event-detail></event-detail> -->
     
     <router-view></router-view>
     <!-- <show-page v-bind:eventAll="events" v-bind:user="user"></show-page> -->
