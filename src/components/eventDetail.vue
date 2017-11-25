@@ -90,7 +90,7 @@ import memberItem from "./memberItem.vue";
                     var tempData = dataSnapshot.val();
                     var tempString = tempData.firstname+" "+
                                     tempData.surname
-                    console.log("Address : ",tempString)
+                    console.log("name : ",tempString)
                     self.event.host = tempString;
                 })
             })

@@ -10,14 +10,23 @@
     </div>
 </template>
 <script>
+import {db} from '../firebase'
 export default {
   props:['eventList'],
   data() {
       return {
-          eventId:this.e
       }
   },
   methods:{
+    translate(UserID){
+        db.ref("User/" + UserID).once('value').then(function(dataSnapshot){
+            var tempData = dataSnapshot.val();
+            var tempString = tempData.firstname+" "+
+                            tempData.surname
+            console.log("Name : ",tempString)
+            return tempString;
+        })
+    }
   }
 }
 </script>
