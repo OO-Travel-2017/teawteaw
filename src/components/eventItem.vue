@@ -1,4 +1,4 @@
-<<template>
+<template>
     <div>
         <div class="ConfirmModalWrapper">
             <button class="btn btn-xs" @click="handleActionButton()">Delete</button>
@@ -16,9 +16,7 @@
         </ul> 
     </div>
 </template>
-<<script>
-import eventDetail from './eventDetail.vue'
-
+<script>
 export default {
     name: 'eventItem',
     props:['eventList'],
@@ -41,13 +39,10 @@ export default {
 }
 </script>
 
-<<style scoped>
+<style scoped>
 ul{
     text-align: left;
     padding: 0px 0px 0px 0px;
     margin:  10px 20px 20px 40px
 }
 </style>
->
->
->

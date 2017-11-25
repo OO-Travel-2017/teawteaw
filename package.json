@@ -10,12 +10,12 @@
     "build": "cross-env NODE_ENV=production browserify -g envify src/main.js | uglifyjs -c warnings=false -m > dist/build.js"
   },
   "dependencies": {
-    "firebase": "^4.6.1",
+    "firebase": "^4.6.2",
     "lodash": "^4.17.4",
     "mime": "^2.0.3",
     "mine": "^0.1.0",
     "toastr": "^2.1.2",
-    "vue": "^2.0.1",
+    "vue": "^2.5.8",
     "vuefire": "^1.4.4"
   },
   "devDependencies": {

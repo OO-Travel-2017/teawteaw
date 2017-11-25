@@ -29,8 +29,7 @@
                 </div>
             </div>
         </div>
-          <!-- </div> -->
-          
+
       </div>
 
   </div>
@@ -42,6 +41,7 @@
     import searchEvent from './searchEvent.vue'
     import showEventPage from './showEventPage.vue'
     import Firebase from "firebase";
+    import VueFire from 'vuefire';
 
     let config = {
         apiKey: "AIzaSyB4a_UPCTlPDVe6r2grNYKP_TQZbfe4DgA",
@@ -55,9 +55,27 @@
     let firebaseApp = Firebase.initializeApp(config);
     let db = firebaseApp.database();
 
+    // var firebase = require('firebase');
+    // Vue.use(VueFire);
+
+    // var vm = new Vue({
+    //     el:'#demo',
+    //     firebase:{
+    //         anArray: db.ref('https://fir-realtimeweb-4eb12.firebaseio.com'),
+    //         anObject:{
+    //             source: db.ref="https://fir-realtimeweb-4eb12.firebaseio.com/Event",
+    //             asObject: true
+
+    //         }
+    //     }
+    // })
+
     export default {
         name: 'homePage',
         props: ['user'],
+        firebase:{
+
+        },
             data(){
                 return {
                     // user: "painter",
