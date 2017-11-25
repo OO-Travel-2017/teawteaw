@@ -25,7 +25,7 @@
                     <show-page v-bind:eventAll="events"></show-page>
                 </div>
                 <div v-show="currentTab === 2">
-                    <!-- <event-detail></event-detail> -->
+                    <create-event></create-event>
                 </div>
             <!-- </div>
         </div> -->
@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import eventDetail from "./eventDetail.vue";
+import createEvent from "./createEvent.vue";
 import eventItem from "./eventItem.vue";
 import searchEvent from "./searchEvent.vue";
 import showEventPage from "./showEventPage.vue";
@@ -68,7 +68,7 @@ export default {
     };
   },
   components: {
-    eventDetail,
+    "create-event":createEvent,
     "event-item": eventItem,
     "search-event": searchEvent,
     "show-page": showEventPage
@@ -92,13 +92,13 @@ export default {
   padding-bottom: 10px;
   border-radius: 5px;
   /* border-color: darkblue; */
-  background-color: #c7ddf7;
+  /* background-color: white; */
 }
-
+/* 
 .homeRight {
   background-color: #c7ddf7;
-  /* #34455A      #36E0FA */
-}
+    #34455A      #36E0FA  
+} */
 
 /* #home {
         margin: 0px;

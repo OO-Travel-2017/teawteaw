@@ -9,10 +9,8 @@
                 <!-- member List -->
                 <div>
                     <h2>Member</h2>
-                    <div class="list-group" style="overflow-y:scroll;" v-for="member in event.event_member">
-                        <member-item :memberName="'Coke'"></member-item>
-                        <member-item :memberName="'Sukee'"></member-item>
-                        <member-item :memberName="'Jame'"></member-item>
+                    <div class="list-group" style="overflow-y:scroll;" >
+                        <member-item :memberID="member" v-for="member in event.event_member"></member-item>
                     </div>
                 </div>
             </div>
@@ -43,9 +41,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group"style="text-align:left;">
-                    <label for="detail">Detail:</label>
-                    <label class="form-control" style="resize:none;overflow-y:scroll;height:400px;" rows="20" id="detail">{{event.explain}}</label>
+                <div class="row">
+                    <div class="form-group"style="text-align:left;">
+                        <label for="detail">Detail:</label>
+                        <label class="form-control" style="resize:none;overflow-y:scroll;height:400px;" rows="20" id="detail">{{event.explain}}</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <center>
+                        <button id="joinButton"type="button" class="btn btn-success" v-on:click="Join()">Join</button>    
+                    </center>
                 </div>
             </div>
         </div>
@@ -63,20 +68,42 @@ import memberItem from "./memberItem.vue";
           }
         },
         created:function(){
-            var eventDetail=this;
-            console.log("id : ", this.$route.query.event_id);
+            var self=this;
             var eventRef = db.ref("Event/" + this.$route.query.event_id);
-            
-            console.log("eventRef",eventRef);
             eventRef.once('value').then(function(dataSnapshot){
-                console.log("Data",dataSnapshot.val());
-                eventDetail.event=dataSnapshot.val();
-                eventDetail.event.event_id=eventDetail.$route.query.event_id;
-                console.log("event : ", eventDetail.event);
+                self.event=dataSnapshot.val();
+                self.event.event_id=self.$route.query.event_id;
+                db.ref("Address/" + self.event.address).once('value').then(function(dataSnapshot){
+                    var tempData = dataSnapshot.val();
+                    var tempString = tempData.place_name+" "+
+                                    tempData.place_number+" "+
+                                    tempData.lane+" "+
+                                    tempData.road+" "+
+                                    tempData.sub_district+" "+
+                                    tempData.district+" "+
+                                    tempData.province+" "+
+                                    tempData.postcode
+                    console.log("Address : ",tempString)
+                    self.event.address = tempString;
+                })
+                db.ref("User/" + self.event.host).once('value').then(function(dataSnapshot){
+                    var tempData = dataSnapshot.val();
+                    var tempString = tempData.firstname+" "+
+                                    tempData.surname
+                    console.log("Address : ",tempString)
+                    self.event.host = tempString;
+                })
             })
         },
         components:{
           memberItem
+        },
+        methods: {
+            Join() {
+            var self = this;
+            self.event.event_member.push("USER004");
+            db.ref("Event/"+self.event.event_id+"/event_member").update(self.event.event_member);
+            }
         }
     }
 </script>

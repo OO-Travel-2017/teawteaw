@@ -1,7 +1,7 @@
 <template>
     <div>
         <router-link :to= "{ path: 'event', query: { event_id: event.event_id }}" v-for="event in eventList">
-        <ul type="button" class="panel panel-danger">
+        <ul type="button" class="panel panel-primary">
             <div class="panel-heading">{{event.event_name}}</div>
             <div class="panel-body" >{{event.begin_date}}</div>
             <div class="panel-body" >{{event.host}}</div>

@@ -6,7 +6,7 @@
       <div class="row">
         <div id="" class="col-sm-12 header-bar" >
             <div class="col-sm-4 user-tag" style="float:right;" id="">
-                <p>{{user.firstname}} {{user.surname}}<img src = "asset/people.png" class="img-user"></p>
+                <p>{{user.firstname}} {{user.surname}}<img src = "asset/Sukee.png" class="img-user"></p>
             </div>
         </div>
         <img src = "asset/header.jpg" class="img-responsive" alt="header" style="width:100%">
@@ -74,6 +74,10 @@ export default {
   color: #2c3e50;
   /* margin-top: 60px; */
 }
+#home {
+  background-color: white;
+}
+
 
 img {
   width: 200px;
@@ -102,7 +106,7 @@ a {
 .header-bar {
   width: 100%;
   height: 70px;
-  background-color: darkblue;
+  background-color: #337ab7;
 }
 .img-user {
   width: 50px;
